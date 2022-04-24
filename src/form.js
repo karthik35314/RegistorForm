@@ -57,15 +57,9 @@ const Form = ({}) => {
     },
   };
 
-  const handlesubmit = (e) => {
-    e.preventDefault();
-  };
-  const handling = (value, event) => {
-    setValues({ state: value, city: null }, false);
-    console.log(value, event);
-  };
+ 
   let { country, state, city } = values;
-  console.log(country, state, city);
+ 
   let {
     fullnameValid,
     contactEmailValid,
@@ -74,7 +68,7 @@ const Form = ({}) => {
     contactEmail,
     fullname,
     phoneNumber,
-    message,
+  
   } = states;
 
   let empty =
@@ -86,6 +80,13 @@ const Form = ({}) => {
     state !== null &&
     city !== null;
   let valid = fullnameValid && contactEmailValid && phoneNumber && messageValid;
+  const handlesubmit = (e, ) => {
+   
+    e.preventDefault();
+    alert( JSON.stringify(states,values)
+     )
+    
+  };
  
   return (
     <div class="container">
@@ -159,8 +160,8 @@ const Form = ({}) => {
                   values.country ? values.country.value : null
                 )}
                 value={values.state}
-                onChange={(value, event) => {
-                  // handling(value,event),
+                onChange={(value) => {
+               
                   setValues({ ...values, state: value, city: null }, false);
                 }}
                 styles={colourStyles}
@@ -206,7 +207,7 @@ const Form = ({}) => {
               Register{" "}
             </button>
           ) : (
-            <button class="btn btn-secondary" type="submit">
+            <button  disabled class="btn btn-secondary" type="submit">
               Register{" "}
             </button>
           )}
